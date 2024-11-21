@@ -1,0 +1,88 @@
+import { Chatter } from 'src/types/chatter';
+
+export default [
+  {
+    id: 'U8ef0c8a53407295ccf4dfcc0083b4fb4',
+    name: 'Kevin',
+    ignore: false,
+    nickname: 'Marcus aka ericflynn',
+    image: 'https://randomuser.me/api/portraits/men/6.jpg',
+  },
+  {
+    id: 'U1a2b3c4d5e6f708192a3b4c5d6e7f8g9',
+    name: '群超實業 王耀文',
+    ignore: false,
+    nickname: 'Donald aka matthew24',
+    image: 'https://randomuser.me/api/portraits/men/4.jpg',
+  },
+  {
+    id: 'U9f8e7d6c5b4a3928170f6e5d4c3b2a1b',
+    name: 'Emma Wong (偉傑媽媽)',
+    ignore: false,
+    nickname: 'Allison aka herringjessica',
+    image: 'https://randomuser.me/api/portraits/women/48.jpg',
+  },
+  {
+    id: 'U0a1b2c3d4e5f6071829a3b4c5d6e7f8g',
+    name: '予廷(Tracy',
+    ignore: false,
+    nickname: 'Donna aka imartinez',
+    image: 'https://randomuser.me/api/portraits/women/27.jpg',
+  },
+  {
+    id: 'U7f6e5d4c3b2a1908170f6e5d4c3b2a1b',
+    name: 'Stephen1007',
+    ignore: false,
+    nickname: 'Stephen(湘樂)',
+    image: 'https://randomuser.me/api/portraits/women/90.jpg',
+  },
+  {
+    id: 'U6e5d4c3b2a1908170f6e5d4c3b2a1b2c',
+    name: 'Tyler',
+    ignore: false,
+    nickname: 'Charles aka andrew57',
+    image: 'https://randomuser.me/api/portraits/men/62.jpg',
+  },
+  {
+    id: 'U5d4c3b2a1908170f6e5d4c3b2a1b2c3d',
+    name: 'Kathy',
+    ignore: false,
+    nickname: 'Ronald aka hickskrista',
+    image: 'https://randomuser.me/api/portraits/men/84.jpg',
+  },
+  {
+    id: 'U4c3b2a1908170f6e5d4c3b2a1b2c3d4e',
+    name: 'Joseph',
+    ignore: false,
+    nickname: 'Chelsea aka denisemendoza',
+    image: 'https://randomuser.me/api/portraits/men/undefined.jpg',
+  },
+  {
+    id: 'U3b2a1908170f6e5d4c3b2a1b2c3d4e5f',
+    name: 'Nicholas',
+    ignore: false,
+    nickname: 'Theresa aka webertyler',
+    image: 'https://randomuser.me/api/portraits/men/undefined.jpg',
+  },
+  {
+    id: 'U2a1908170f6e5d4c3b2a1b2c3d4e5f6g',
+    name: 'Brandon',
+    ignore: false,
+    nickname: 'Michael aka brittanyhenderson',
+    image: 'https://randomuser.me/api/portraits/men/undefined.jpg',
+  },
+  {
+    id: 'U1a1908170f6e5d4c3b2a1b2c3d4e5f6g',
+    name: 'James',
+    ignore: false,
+    nickname: 'Jorge aka gordonlogan',
+    image: 'https://randomuser.me/api/portraits/men/undefined.jpg',
+  },
+  {
+    id: 'U0a1908170f6e5d4c3b2a1b2c3d4e5f6g',
+    name: 'Alexander',
+    ignore: false,
+    nickname: 'Stacey aka bwood',
+    image: 'https://randomuser.me/api/portraits/men/undefined.jpg',
+  },
+] as Chatter[];
