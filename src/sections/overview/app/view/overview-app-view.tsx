@@ -42,13 +42,6 @@ export default function OverviewAppView() {
   const PX_PER_SECOND = (transcriptData?.length || 0) / timelineWidth;
   const MIN_HIGHLIGHT_WIDTH = GROUP_BY_SECOND_THRESHOLD * PX_PER_SECOND;
 
-  useEffect(() => {
-    // TODO: remove mock delay
-    fetch(`/api/getTranscript`)
-      .then((res) => res.json())
-      .then(setTranscriptData);
-  }, [setTranscriptData]);
-
   const videoRef = useRef<HTMLVideoElement>(null);
   const { setTimeCursor, cursorOnTranscript, handleRowSelectionModelChange } = useCursorHook({
     videoRef,
@@ -170,9 +163,7 @@ export default function OverviewAppView() {
                         minWidth: `${MIN_HIGHLIGHT_WIDTH}px`,
                         padding: 0,
                       }}
-                    >
-                      {group.transcripts.length}
-                    </Button>
+                    />
                   </Grid>
                 ))}
               </Grid>
