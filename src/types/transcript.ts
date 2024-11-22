@@ -9,6 +9,5 @@ export type TranscriptSection = {
 export type Transcript = {
   id: number;
   time: string;
-  timeInSeconds: number;
   text: string;
 };
