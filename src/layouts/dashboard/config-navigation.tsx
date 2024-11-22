@@ -53,22 +53,12 @@ export function useNavData() {
       // OVERVIEW
       // ----------------------------------------------------------------------
       {
-        subheader: t('管理'),
+        subheader: t('Tools'),
         items: [
           {
-            title: t('工讀生概況'),
+            title: t('Transcript'),
             path: paths.dashboard.root,
             icon: ICONS.dashboard,
-          },
-          {
-            title: t('工讀生對話紀錄'),
-            path: paths.dashboard.chat,
-            icon: ICONS.chat,
-          },
-          {
-            title: t('工讀生訓練'),
-            path: paths.dashboard.mail,
-            icon: ICONS.tour,
           },
         ],
       },
