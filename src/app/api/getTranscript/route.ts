@@ -197,6 +197,7 @@ export async function POST(request: Request) {
     {
       method: 'POST',
       body: formData,
+      signal: AbortSignal.timeout(590000),
     }
   );
   const transcript = (await transcriptData.json()) as TranscriptData;

@@ -19,6 +19,7 @@ export function useLoadTranscriptData() {
       fetch(`/api/getTranscript`, {
         method: 'POST',
         body: formData,
+        signal: AbortSignal.timeout(590000),
       })
         .then((res) => res.json())
         .then((res) => {
