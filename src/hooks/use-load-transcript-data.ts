@@ -8,7 +8,7 @@ export function useLoadTranscriptData() {
   const [error, setError] = useState<Error | null>(null);
   const [file, setFile] = useState<File | string | null>(null);
 
-  const handleDropSingleFile = useCallback((_acceptedFiles: File[]) => {
+  const handleDropSingleFile = useCallback(async (_acceptedFiles: File[]) => {
     const newFile = _acceptedFiles[0];
     const formData = new FormData();
     formData.append('video_file', newFile);
@@ -16,17 +16,23 @@ export function useLoadTranscriptData() {
       setFile(newFile);
       const name = newFile.name.replace(/\.[^.]+$/, '');
       console.log(name);
-      fetch(`/api/getTranscript`, {
-        method: 'POST',
-        body: formData,
-        signal: AbortSignal.timeout(590000),
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          console.log(res);
-          return res;
+      const response = await fetch(
+        'https://asia-east1-opay-donation-list.cloudfunctions.net/umas-gilia-transcriber',
+        {
+          method: 'POST',
+          body: formData,
+          signal: AbortSignal.timeout(590000),
+        }
+      );
+      const transcript = (await response.json()) as TranscriptData;
+      let id = 0;
+      transcript.sections.map((s) =>
+        s.sectionTranscripts.map((t) => {
+          id += 1;
+          return { ...t, id };
         })
-        .then(setTranscriptData);
+      );
+      setTranscriptData(transcript);
     }
   }, []);
 
