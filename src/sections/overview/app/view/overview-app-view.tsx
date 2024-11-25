@@ -58,6 +58,21 @@ export default function OverviewAppView() {
   // Use the captions hook
   useVideoCaptions(videoRef, transcriptData);
 
+  const [objectUrl, setObjectUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (file && file instanceof Blob) {
+      const url = URL.createObjectURL(file);
+      setObjectUrl(url);
+    }
+  }, [file]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.src = objectUrl || '/assets/video/SampleVideo.mp4';
+    }
+  }, [objectUrl]);
+
   const handleCellChange = (params: GridCellParams) => {
     if (!transcriptData) return;
     const newTranscriptData = JSON.parse(JSON.stringify(transcriptData));
@@ -127,7 +142,7 @@ export default function OverviewAppView() {
             </Grid>
             <Grid xs={12} md={6}>
               <video width="100%" controls ref={videoRef}>
-                <source src="/assets/video/SampleVideo.mp4" type="video/mp4" />
+                <source src={objectUrl || '/assets/video/SampleVideo.mp4'} type="video/mp4" />
                 <track
                   kind="captions"
                   src={generateVTT(transcriptData.sections.flatMap((s) => s.sectionTranscripts))}

@@ -8,23 +8,24 @@ export function useLoadTranscriptData() {
   const [error, setError] = useState<Error | null>(null);
   const [file, setFile] = useState<File | string | null>(null);
 
-  const MOCK_DELAY = 5000;
-
   const handleDropSingleFile = useCallback((_acceptedFiles: File[]) => {
     const newFile = _acceptedFiles[0];
+    const formData = new FormData();
+    formData.append('video_file', newFile);
     if (newFile) {
       setFile(newFile);
       const name = newFile.name.replace(/\.[^.]+$/, '');
       console.log(name);
-      setTimeout(() => {
-        fetch(`/api/getTranscript`)
-          .then((res) => res.json())
-          .then((res) => {
-            console.log(res);
-            return res;
-          })
-          .then(setTranscriptData);
-      }, MOCK_DELAY);
+      fetch(`/api/getTranscript`, {
+        method: 'POST',
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          return res;
+        })
+        .then(setTranscriptData);
     }
   }, []);
 

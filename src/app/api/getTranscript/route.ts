@@ -2,7 +2,7 @@
 
 import { TranscriptData } from 'src/types/transcript';
 
-export async function GET(request: Request) {
+export async function POST(request: Request) {
   const mockTranscript: TranscriptData = {
     length: 203,
     sections: [
@@ -188,5 +188,24 @@ export async function GET(request: Request) {
       },
     ],
   };
-  return Response.json(mockTranscript);
+  const formData = await request.formData();
+  const file = formData.get('video_file');
+  console.log(file);
+
+  const transcriptData = await fetch(
+    'https://asia-east1-opay-donation-list.cloudfunctions.net/umas-gilia-transcriber',
+    {
+      method: 'POST',
+      body: formData,
+    }
+  );
+  const transcript = (await transcriptData.json()) as TranscriptData;
+  let id = 0;
+  transcript.sections.map((s) =>
+    s.sectionTranscripts.map((t) => {
+      id += 1;
+      return { ...t, id };
+    })
+  );
+  return Response.json(transcript);
 }
